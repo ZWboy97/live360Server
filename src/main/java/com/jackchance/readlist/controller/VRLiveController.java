@@ -18,7 +18,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/livelist")
+@RequestMapping("/live360/livemessages")
 public class VRLiveController {
 
     @Autowired

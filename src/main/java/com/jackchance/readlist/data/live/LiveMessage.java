@@ -12,20 +12,29 @@ public class LiveMessage {
     private Integer id;
 
     private Integer liveRoomId;
-    private String name;
-    private String desc;
+    private String liveName;
+    private String liveDesc;
     private Long publishTime;
     private String message;
     private String coverImageUrl;
     private Boolean isVr;
     private Integer liveStatus;
-
-    public Integer getId() {
-        return id;
-    }
+    private Long createTime;
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Long getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Long createTime) {
+        this.createTime = createTime;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public Integer getLiveRoomId() {
@@ -36,20 +45,20 @@ public class LiveMessage {
         this.liveRoomId = liveRoomId;
     }
 
-    public String getName() {
-        return name;
+    public String getLiveName() {
+        return liveName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLiveName(String name) {
+        this.liveName = name;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getLiveDesc() {
+        return liveDesc;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setLiveDesc(String desc) {
+        this.liveDesc = desc;
     }
 
     public Long getPublishTime() {
@@ -76,11 +85,11 @@ public class LiveMessage {
         this.coverImageUrl = coverImageUrl;
     }
 
-    public Boolean getVr() {
+    public Boolean getIsVr() {
         return isVr;
     }
 
-    public void setVr(Boolean vr) {
+    public void setIsVr(Boolean vr) {
         isVr = vr;
     }
 

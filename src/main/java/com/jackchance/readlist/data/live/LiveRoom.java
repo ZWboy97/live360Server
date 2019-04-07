@@ -21,6 +21,24 @@ public class LiveRoom {
     private Long startTime;
     private Long endTime;
     private Boolean isVr;
+    private String pushUrl;
+    private Long createTime;
+
+    public Long getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Long createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getPushUrl() {
+        return pushUrl;
+    }
+
+    public void setPushUrl(String pushUrl) {
+        this.pushUrl = pushUrl;
+    }
 
     public Integer getId() {
         return id;
@@ -110,11 +128,11 @@ public class LiveRoom {
         this.endTime = endTime;
     }
 
-    public Boolean getVr() {
+    public Boolean getIsVr() {
         return isVr;
     }
 
-    public void setVr(Boolean vr) {
-        isVr = vr;
+    public void setIsVr(Boolean isVr) {
+        this.isVr = isVr;
     }
 }
