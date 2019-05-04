@@ -3,8 +3,6 @@ package com.jackchance.readlist.controller;
 import com.jackchance.readlist.data.live.LiveMessage;
 import com.jackchance.readlist.jpa.LiveMessageListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
