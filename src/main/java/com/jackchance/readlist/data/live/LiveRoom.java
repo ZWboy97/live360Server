@@ -20,9 +20,74 @@ public class LiveRoom {
     private String playbackUrl;
     private Long startTime;
     private Long endTime;
-    private Boolean isVr;
+    private Boolean enableVr;
     private String pushUrl;
     private Long createTime;
+
+    private String paraments = "";   //推流拉流参数，支持直播录制、转码、hls等功能
+
+    private Boolean enableDVR = true;
+    private Boolean enableHLS = true;
+
+    private Boolean enableTransform = true;
+    private String dvrUrl = "";
+    private String transformUrl = "";
+
+    public String getTransformUrl() {
+        return transformUrl;
+    }
+
+    public void setTransformUrl(String transformUrl) {
+        this.transformUrl = transformUrl;
+    }
+
+    public String getParaments() {
+        return paraments;
+    }
+
+    public void setParaments(String paraments) {
+        this.paraments = paraments;
+    }
+
+    public Boolean getEnableDVR() {
+        return enableDVR;
+    }
+
+    public void setEnableDVR(Boolean enableDVR) {
+        this.enableDVR = enableDVR;
+    }
+
+    public Boolean getEnableVr() {
+        return enableVr;
+    }
+
+    public void setEnableVr(Boolean enableVr) {
+        this.enableVr = enableVr;
+    }
+
+    public Boolean getEnableHLS() {
+        return enableHLS;
+    }
+
+    public void setEnableHLS(Boolean enableHLS) {
+        this.enableHLS = enableHLS;
+    }
+
+    public Boolean getEnableTransform() {
+        return enableTransform;
+    }
+
+    public void setEnableTransform(Boolean enableTransform) {
+        this.enableTransform = enableTransform;
+    }
+
+    public String getDvrUrl() {
+        return dvrUrl;
+    }
+
+    public void setDvrUrl(String dvrUrl) {
+        this.dvrUrl = dvrUrl;
+    }
 
     public Long getCreateTime() {
         return createTime;
@@ -129,10 +194,18 @@ public class LiveRoom {
     }
 
     public Boolean getIsVr() {
-        return isVr;
+        return enableVr;
     }
 
     public void setIsVr(Boolean isVr) {
-        this.isVr = isVr;
+        this.enableVr = isVr;
+    }
+
+    public Boolean getVR() {
+        return enableVr;
+    }
+
+    public void setIsVR(Boolean isVr) {
+        this.enableVr = isVr;
     }
 }

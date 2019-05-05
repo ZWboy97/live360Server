@@ -34,10 +34,24 @@ public class LiveRoomController {
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public LiveRoom postLiveRoom(@RequestBody LiveRoom liveRoom) {
         String liveName = String.valueOf(liveRoom.hashCode());
-        String pushUrl = Const.PUSH_RTMP_PREFIX + "/live360/" + liveName;
+        String paraments = "";
+        if (liveRoom.getEnableHLS()) {
+            paraments += "hls";
+        }
+        if (liveRoom.getEnableDVR()) {
+            paraments += ".dvr";
+        }
+        if (liveRoom.getEnableTransform()) {
+            paraments += ".transform";
+        }
+        String baseUrl = Const.RTMP_PREFIX + "/live360/" + liveName;
+        String pushUrl = baseUrl;
+        if (!paraments.equals("")) {
+            pushUrl += "...vhost..." + paraments;
+        }
         String pullRTMPUrl = pushUrl + ".flv";
-        String pullHLSUrl = pushUrl + ".hls";
-        String playbackUrl = pushUrl + ".mp4";
+        String pullHLSUrl = Const.HTTP_PREFIX + "/live360/" + liveName + ".m3u8";
+        String playbackUrl = Const.HTTP_PREFIX + "/Live360WebPlayer/Live360Player.html?appname=live360&id=" + liveName;
         liveRoom.setHostId(00000001);
         liveRoom.setRoomStatus(1);
         liveRoom.setPlaybackUrl(playbackUrl);
@@ -46,6 +60,15 @@ public class LiveRoomController {
         liveRoom.setPullRTMPUrl(pullRTMPUrl);
         Date date = new Date();
         liveRoom.setCreateTime(date.getTime());
+        liveRoom.setEnableVr(liveRoom.getVR());
+        if (liveRoom.getEnableDVR()) {
+            String dvrUrl = Const.HTTP_PREFIX + "/live360/" + liveName + ".flv";
+            liveRoom.setDvrUrl(dvrUrl);
+        }
+        if (liveRoom.getEnableTransform()) {
+            String transformUrl = Const.RTMP_PREFIX + "/live360/" + liveName + "...vhost..." + paraments;
+            liveRoom.setTransformUrl(transformUrl);
+        }
         return this.repository.save(liveRoom);
     }
 
@@ -57,6 +80,11 @@ public class LiveRoomController {
     @RequestMapping(value = "/{roomid}", method = RequestMethod.DELETE)
     public void deleteLiveRoomById(@PathVariable Integer roomId) {
         this.repository.deleteById(roomId);
+    }
+
+    @RequestMapping(value = "/{roomid}", method = RequestMethod.POST)
+    public void updateLiveRoom(@RequestBody LiveRoom liveRoom) {
+        this.repository.saveAndFlush(liveRoom);
     }
 
 
